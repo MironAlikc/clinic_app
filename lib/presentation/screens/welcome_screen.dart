@@ -1,4 +1,5 @@
 import 'package:clinic_app/data/app_data.dart';
+import 'package:clinic_app/presentation/screens/login_screen.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
 import 'package:clinic_app/presentation/widgets/settings_button.dart';
@@ -51,7 +52,14 @@ class WelcomScreen extends StatelessWidget {
             ),
             SizedBox(height: 5.h),
             AppButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
               title: 'Войти',
             )
           ],
@@ -60,5 +68,3 @@ class WelcomScreen extends StatelessWidget {
     );
   }
 }
-
-
