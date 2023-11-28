@@ -1,5 +1,6 @@
 import 'package:clinic_app/presentation/screens/welcome_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
+import 'package:clinic_app/presentation/widgets/text_field_unfocus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,19 +14,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Clinic app',
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.whith,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: AppColors.whith,
-            elevation: 1,
+      builder: (context, child) => TextFieldUnfocus(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Clinic app',
+          theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.whith,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: AppColors.whith,
+              elevation: 1,
+            ),
+            fontFamily: 'sf pro',
           ),
-          fontFamily: 'sf pro',
+          home: const WelcomScreen(),
         ),
-        home: const WelcomScreen(),
       ),
     );
   }
 }
+
