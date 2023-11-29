@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
+import 'package:clinic_app/presentation/widgets/app_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_close_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
@@ -29,22 +32,41 @@ class LoginScreen extends StatelessWidget {
               style: AppFonts.w700s34,
             ),
             SizedBox(height: 49.h),
+            const Text(
+              'Номер телефона',
+              style: AppFonts.w400s15,
+            ),
+            SizedBox(height: 12.h),
             Padding(
-              padding: const EdgeInsets.all(11),
-              child: Column(
-                children: [
-                  const Text(
-                    'Номер телефона',
-                    style: AppFonts.w400s15,
-                  ),
-                  SizedBox(height: 12.h),
-                  CustomTextFeild(
-                    hintText: '_ _ _ _ _ _ _ _ _ _ ',
-                    controller: TextEditingController(),
-                  )
-                ],
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: CustomTextFeild(
+                hintText: '_ _ _ _ _ _ _ _ _ _ ',
+                controller: TextEditingController(),
               ),
             ),
+            SizedBox(height: 12.h),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                'На указанный вами номер придет однократное СМС-сообщение с кодом подтверждения.',
+                style: AppFonts.w400s15,
+              ),
+            ),
+            const Spacer(),
+            AppButton(
+              onPressed: () {
+                int code = Random().nextInt(8999) + 1000;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      code.toString(),
+                    ),
+                  ),
+                );
+              },
+              title: 'Далее',
+            ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
