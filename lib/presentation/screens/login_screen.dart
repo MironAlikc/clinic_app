@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:clinic_app/core/app_consts.dart';
+import 'package:clinic_app/presentation/screens/activation_number_screen.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_close_button.dart';
@@ -74,6 +75,15 @@ class LoginScreen extends StatelessWidget {
                 await SharedPrefsWidget.prefs.setString(
                   AppConst.phoneNumber,
                   controller.text,
+                );
+                // ignore: use_build_context_synchronously
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ActivationNamberScreen(
+                      code: code,
+                    ),
+                  ),
                 );
               },
               title: 'Далее',

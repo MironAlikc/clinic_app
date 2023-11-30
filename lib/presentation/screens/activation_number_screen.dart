@@ -1,13 +1,16 @@
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
-import 'package:clinic_app/presentation/widgets/custom_text_feild.dart';
+import 'package:clinic_app/presentation/widgets/code_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActivationNamberScreen extends StatefulWidget {
-  const ActivationNamberScreen({super.key});
-
+  const ActivationNamberScreen({
+    super.key,
+    required this.code,
+  });
+  final int code;
   @override
   State<ActivationNamberScreen> createState() => _ActivationNamberScreenState();
 }
@@ -16,7 +19,6 @@ class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();
-    String phone = '';
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -35,38 +37,30 @@ class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 20.h),
           const Text(
             'Введите код из смс',
-            style: AppFonts.w700s34,
+            style: AppFonts.w500s22,
           ),
-          SizedBox(height: 49.h),
-          const Text(
-            'Номер телефона',
-            style: AppFonts.w400s15,
-          ),
-          SizedBox(height: 12.h),
+          SizedBox(height: 147.h),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: CustomTextFeild(
-              hintText: '_ _ _ _ _ _ _ _ _ _ ',
-              controller: controller,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: CodeTextField(controller: controller),
           ),
-          SizedBox(height: 12.h),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+          SizedBox(height: 24.h),
+          TextButton(
+            onPressed: () {},
             child: Text(
-              'На указанный вами номер придет однократное СМС-сообщение с кодом подтверждения.',
-              style: AppFonts.w400s15,
+              'Получить код повторно',
+              style: AppFonts.w400s15.copyWith(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
             ),
-          ),
-          Text(
-            phone,
-            style: AppFonts.w400s15,
           ),
           const Spacer(),
           AppButton(
-            onPressed: () async {},
+            onPressed: () {},
             title: 'Далее',
           ),
           SizedBox(height: 20.h),

@@ -9,7 +9,7 @@ class SharedPrefsWidget extends StatelessWidget {
 
   static late SharedPreferences prefs;
   initPrefs() async {
-    await SharedPreferences.getInstance();
+    prefs = await SharedPreferences.getInstance();
   }
 
   @override
