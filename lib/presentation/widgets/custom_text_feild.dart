@@ -7,12 +7,15 @@ class CustomTextFeild extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.controller,
+    required this.onChanged,
   });
   final String hintText;
   final TextEditingController controller;
+  final Function(String) onChanged;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       keyboardType: TextInputType.phone,
       maxLength: 9,
       style: AppFonts.w700s17,

@@ -10,13 +10,18 @@ import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController controller = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-    String phone = '';
     return Scaffold(
       appBar: AppBar(
         leading: CustomCloseButton(
@@ -47,6 +52,9 @@ class LoginScreen extends StatelessWidget {
               child: CustomTextFeild(
                 hintText: '_ _ _ _ _ _ _ _ _ _ ',
                 controller: controller,
+                onChanged: (String) {
+                  setState(() {});
+                },
               ),
             ),
             SizedBox(height: 12.h),
@@ -57,35 +65,33 @@ class LoginScreen extends StatelessWidget {
                 style: AppFonts.w400s15,
               ),
             ),
-            Text(
-              phone,
-              style: AppFonts.w400s15,
-            ),
             const Spacer(),
             AppButton(
-              onPressed: () async {
-                int code = Random().nextInt(8999) + 1000;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      code.toString(),
-                    ),
-                  ),
-                );
-                await SharedPrefsWidget.prefs.setString(
-                  AppConst.phoneNumber,
-                  controller.text,
-                );
-                // ignore: use_build_context_synchronously
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ActivationNamberScreen(
-                      code: code,
-                    ),
-                  ),
-                );
-              },
+              onPressed: controller.text.length < 9
+                  ? null
+                  : () async {
+                      int code = Random().nextInt(8999) + 1000;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            code.toString(),
+                          ),
+                        ),
+                      );
+                      await SharedPrefsWidget.prefs.setString(
+                        AppConst.phoneNumber,
+                        controller.text,
+                      );
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ActivationNamberScreen(
+                            code: code,
+                          ),
+                        ),
+                      );
+                    },
               title: 'Далее',
             ),
             SizedBox(height: 20.h),

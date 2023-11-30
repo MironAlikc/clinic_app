@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
@@ -5,20 +7,22 @@ import 'package:clinic_app/presentation/widgets/code_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class ActivationNamberScreen extends StatefulWidget {
-  const ActivationNamberScreen({
+  ActivationNamberScreen({
     super.key,
     required this.code,
   });
-  final int code;
+  int? code;
   @override
   State<ActivationNamberScreen> createState() => _ActivationNamberScreenState();
 }
 
 class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
+  final TextEditingController controller = TextEditingController();
+  String? errorText;
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -45,11 +49,33 @@ class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
           SizedBox(height: 147.h),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: CodeTextField(controller: controller),
+            child: CodeTextField(
+              controller: controller,
+              errorText: errorText,
+              onChanged: (val) {
+                if (val == widget.code.toString()) {
+                  errorText = null;
+                  setState(() {});
+                } else {
+                  errorText = 'Код не верный';
+                  setState(() {});
+                }
+                setState(() {});
+              },
+            ),
           ),
           SizedBox(height: 24.h),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              widget.code = Random().nextInt(8999) + 1000;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    widget.code.toString(),
+                  ),
+                ),
+              );
+            },
             child: Text(
               'Получить код повторно',
               style: AppFonts.w400s15.copyWith(
@@ -60,7 +86,7 @@ class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
           ),
           const Spacer(),
           AppButton(
-            onPressed: () {},
+            onPressed: controller.text.length < 4 ? null : () {},
             title: 'Далее',
           ),
           SizedBox(height: 20.h),
