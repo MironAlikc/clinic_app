@@ -7,13 +7,18 @@ class CodeTextField extends StatelessWidget {
   const CodeTextField({
     super.key,
     required this.controller,
+    this.errorText,
+    required this.onChanged,
   });
 
   final TextEditingController controller;
+  final String? errorText;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       controller: controller,
       style: AppFonts.w600s18.copyWith(
         color: AppColors.black,
@@ -23,6 +28,10 @@ class CodeTextField extends StatelessWidget {
       maxLength: 4,
       obscuringCharacter: '*',
       decoration: InputDecoration(
+        errorText: errorText,
+        errorStyle: AppFonts.w600s18.copyWith(
+          color: Colors.red,
+        ),
         counterText: '',
         suffixIcon: CircleAvatar(
           radius: 17.5.r,

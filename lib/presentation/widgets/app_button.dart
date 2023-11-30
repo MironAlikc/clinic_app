@@ -9,7 +9,7 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
   });
-  final Function() onPressed;
+  final Function()? onPressed;
   final String title;
 
   @override
