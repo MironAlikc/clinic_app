@@ -1,25 +1,22 @@
 import 'dart:math';
 
+import 'package:clinic_app/core/app_consts.dart';
+import 'package:clinic_app/presentation/screens/activation_number_screen.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_close_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_text_feild.dart';
+import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController controler = TextEditingController();
-  String phone = '';
-  @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
+    String phone = '';
     return Scaffold(
       appBar: AppBar(
         leading: CustomCloseButton(
@@ -49,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: CustomTextFeild(
                 hintText: '_ _ _ _ _ _ _ _ _ _ ',
-                controller: TextEditingController(),
+                controller: controller,
               ),
             ),
             SizedBox(height: 12.h),
@@ -67,20 +64,27 @@ class _LoginScreenState extends State<LoginScreen> {
             const Spacer(),
             AppButton(
               onPressed: () async {
-                final SharedPreferences prefs =
-                    await SharedPreferences.getInstance();
-                prefs.setString('phoneNamber', controler.text);
-                print(prefs.getString('phoneNamber'));
-                //phone = controler.text;
-                setState(() {});
-                //  int code = Random().nextInt(8999) + 1000;
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   SnackBar(
-                //     content: Text(
-                //       code.toString(),
-                //     ),
-                //   ),
-                // );
+                int code = Random().nextInt(8999) + 1000;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      code.toString(),
+                    ),
+                  ),
+                );
+                await SharedPrefsWidget.prefs.setString(
+                  AppConst.phoneNumber,
+                  controller.text,
+                );
+                // ignore: use_build_context_synchronously
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ActivationNamberScreen(
+                      code: code,
+                    ),
+                  ),
+                );
               },
               title: 'Далее',
             ),
