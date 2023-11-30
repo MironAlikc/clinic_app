@@ -1,5 +1,6 @@
-import 'package:clinic_app/presentation/screens/welcome_screen.dart';
+import 'package:clinic_app/presentation/screens/activation_number_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
+import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
 import 'package:clinic_app/presentation/widgets/text_field_unfocus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
             ),
             fontFamily: 'sf pro',
           ),
-          home: const WelcomScreen(),
+          home: SharedPrefsWidget(
+            child: const ActivationNamberScreen(),
+          ),
         ),
       ),
     );
