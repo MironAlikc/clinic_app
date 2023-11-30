@@ -6,10 +6,18 @@ import 'package:clinic_app/presentation/widgets/custom_close_button.dart';
 import 'package:clinic_app/presentation/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController controler = TextEditingController();
+  String phone = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,17 +60,27 @@ class LoginScreen extends StatelessWidget {
                 style: AppFonts.w400s15,
               ),
             ),
+            Text(
+              phone,
+              style: AppFonts.w400s15,
+            ),
             const Spacer(),
             AppButton(
-              onPressed: () {
-                int code = Random().nextInt(8999) + 1000;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      code.toString(),
-                    ),
-                  ),
-                );
+              onPressed: () async {
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+                prefs.setString('phoneNamber', controler.text);
+                print(prefs.getString('phoneNamber'));
+                //phone = controler.text;
+                setState(() {});
+                //  int code = Random().nextInt(8999) + 1000;
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   SnackBar(
+                //     content: Text(
+                //       code.toString(),
+                //     ),
+                //   ),
+                // );
               },
               title: 'Далее',
             ),
