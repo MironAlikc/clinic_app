@@ -2,6 +2,11 @@ import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppFonts {
+  static const TextStyle w400s10 = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    color: AppColors.hintTextColor,
+  );
   static const TextStyle w400s15 = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w400,
