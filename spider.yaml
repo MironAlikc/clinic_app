@@ -29,7 +29,10 @@ use_references_list: false
 # Location where all the generated references will be stored
 package: resources
 
-groups:
-  - path: assets/pngs
+  - path: assets/pngs/
     class_name: AppPngs
-    types: [ .png ]
+    types: [ .png  ]
+groups:
+  - path: assets/svgs/
+    class_name: AppSvgs
+    types: [ .svg ]
