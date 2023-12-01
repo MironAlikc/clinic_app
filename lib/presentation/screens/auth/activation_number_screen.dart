@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:clinic_app/presentation/screens/auth/create_profile_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
@@ -86,7 +86,16 @@ class _ActivationNamberScreenState extends State<ActivationNamberScreen> {
           ),
           const Spacer(),
           AppButton(
-            onPressed: controller.text.length < 4 ? null : () {},
+            onPressed: controller.text.length < 4
+                ? null
+                : () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CreateProfileScreen(),
+                      ),
+                    );
+                  },
             title: 'Далее',
           ),
           SizedBox(height: 20.h),
