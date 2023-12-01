@@ -1,10 +1,9 @@
 import 'package:clinic_app/data/app_data.dart';
-import 'package:clinic_app/presentation/screens/login_screen.dart';
+import 'package:clinic_app/presentation/screens/auth/login_screen.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/app_button.dart';
 import 'package:clinic_app/presentation/widgets/settings_button.dart';
 import 'package:clinic_app/presentation/widgets/welcome_info_row.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +52,7 @@ class WelcomScreen extends StatelessWidget {
             SizedBox(height: 5.h),
             AppButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const LoginScreen(),

@@ -1,4 +1,4 @@
-import 'package:clinic_app/presentation/screens/welcome_screen.dart';
+import 'package:clinic_app/presentation/screens/spalsh_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
 import 'package:clinic_app/presentation/widgets/text_field_unfocus.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             fontFamily: 'sf pro',
           ),
           home: SharedPrefsWidget(
-            child: const WelcomScreen(),
+            child: const SpalshScreen(),
           ),
         ),
       ),
