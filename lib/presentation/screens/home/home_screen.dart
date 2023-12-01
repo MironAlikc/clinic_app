@@ -1,7 +1,6 @@
 import 'package:clinic_app/presentation/screens/home/profile_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
-import 'package:clinic_app/presentation/widgets/settings_button.dart';
 import 'package:clinic_app/resources/resources.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
