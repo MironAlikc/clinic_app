@@ -1,3 +1,4 @@
+import 'package:clinic_app/presentation/screens/home/profile_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/settings_button.dart';
@@ -34,35 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.blueAccent,
       body: Text('Мои доктора'),
     ),
-    Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          title: const Text(
-            'Мой профиль',
-            style: AppFonts.w700s34,
-          ),
-          actions: [
-            SettingsButton(
-              onPressed: () {},
-            ),
-          ],
-        ),
-        backgroundColor: Colors.white,
-        body: const Center(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                SizedBox(height: 16),
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: AppColors.lightBlue,
-                ),
-                
-              ],
-            ),
-          ),
-        )),
+    const ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {
