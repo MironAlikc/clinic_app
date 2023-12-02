@@ -12,4 +12,5 @@ class AppSvgs {
   static const String diagnos = 'assets/svgs/diagnos.svg';
   static const String recomends = 'assets/svgs/recomends.svg';
   static const String add = 'assets/svgs/add.svg';
+  static const String bell = 'assets/svgs/bell.svg';
 }

@@ -1,3 +1,4 @@
+import 'package:clinic_app/presentation/screens/home/doctors_screen.dart';
 import 'package:clinic_app/presentation/screens/home/profile_screen.dart';
 import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
@@ -15,13 +16,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PersistentTabController _controller = PersistentTabController(
-    initialIndex: 4,
+    initialIndex: 0,
   );
   List<Widget> screens = [
-    const Scaffold(
-      backgroundColor: Colors.amber,
-      body: Text('Доктора'),
-    ),
+    const DoctorsScreen(),
     const Scaffold(
       backgroundColor: Colors.greenAccent,
       body: Text('Статьи'),

@@ -6,6 +6,7 @@ import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/settings_button.dart';
 import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
 import 'package:clinic_app/resources/resources.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,6 +21,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   String? imagePath;
+  File? pickedFile;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               SizedBox(
                 //height: MediaQuery.of(context).size.height * 0.4,
-                height: 356.h,
+                height: 400.h,
                 child: DefaultTabController(
                   length: 3,
                   child: Column(
@@ -150,7 +152,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     SvgPicture.asset(AppSvgs.add),
                                     TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          openFilePicker();
+                                        },
                                         child: Text(
                                           'Добавить документ',
                                           style: AppFonts.w500s15.copyWith(
@@ -179,6 +183,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> openFilePicker() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      pickedFile = File(result.files.single.path!);
+    } else {
+      // User canceled the picker
+    }
   }
 
   void openDialog() {
