@@ -5,8 +5,10 @@ import 'package:clinic_app/presentation/theme/app_colors.dart';
 import 'package:clinic_app/presentation/theme/app_fonts.dart';
 import 'package:clinic_app/presentation/widgets/settings_button.dart';
 import 'package:clinic_app/presentation/widgets/shared_prefs_widget.dart';
+import 'package:clinic_app/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -95,6 +97,83 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 formatNumber(),
                 style: AppFonts.w500s22,
               ),
+              SizedBox(
+                //height: MediaQuery.of(context).size.height * 0.4,
+                height: 356.h,
+                child: DefaultTabController(
+                  length: 3,
+                  child: Column(
+                    children: [
+                      TabBar(
+                        indicatorWeight: 3,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicatorColor: AppColors.buttonColor,
+                        unselectedLabelStyle: AppFonts.w500s15,
+                        labelStyle: AppFonts.w500s15,
+                        tabs: <Widget>[
+                          Tab(
+                            text: 'Анализы',
+                            icon: SvgPicture.asset(AppSvgs.analys),
+                          ),
+                          Tab(
+                            text: 'Дифгнозы',
+                            icon: SvgPicture.asset(AppSvgs.diagnos),
+                          ),
+                          Tab(
+                            text: 'Рекомендации',
+                            icon: SvgPicture.asset(AppSvgs.recomends),
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: TabBarView(
+                          children: <Widget>[
+                            Center(
+                                child: Column(
+                              children: [
+                                SizedBox(height: 32.h),
+                                Image.asset(
+                                  AppPngs.analys,
+                                  height: 105.h,
+                                ),
+                                SizedBox(height: 22.h),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  "У вас пока нет добавленных результатов анализов",
+                                  style: AppFonts.w500s15.copyWith(
+                                    color: AppColors.fontsColor,
+                                  ),
+                                ),
+                                SizedBox(height: 33.h),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(AppSvgs.add),
+                                    TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          'Добавить документ',
+                                          style: AppFonts.w500s15.copyWith(
+                                            color: AppColors.buttonColor,
+                                          ),
+                                        ))
+                                  ],
+                                )
+                              ],
+                            )),
+                            const Center(
+                              child: Text("It's rainy here"),
+                            ),
+                            const Center(
+                              child: Text("It's sunny here"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
@@ -140,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         SharedPrefsWidget.prefs.getString(AppConst.phoneNumber) ?? '';
 
     result =
-        '+996 ${phone.substring(0, 3)} ${phone.substring(3, 5)} ${phone.substring(5, 7)} ${phone.substring(7, 9)}';
+        '+0 ${phone.substring(0, 3)} ${phone.substring(3, 5)} ${phone.substring(5, 7)} ${phone.substring(7, 9)}';
     return result;
   }
 
