@@ -131,40 +131,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: TabBarView(
                           children: <Widget>[
                             Center(
-                                child: Column(
-                              children: [
-                                SizedBox(height: 32.h),
-                                Image.asset(
-                                  AppPngs.analys,
-                                  height: 105.h,
-                                ),
-                                SizedBox(height: 22.h),
-                                Text(
-                                  textAlign: TextAlign.center,
-                                  "У вас пока нет добавленных результатов анализов",
-                                  style: AppFonts.w500s15.copyWith(
-                                    color: AppColors.fontsColor,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 32.h),
+                                  Image.asset(
+                                    AppPngs.analys,
+                                    height: 105.h,
                                   ),
-                                ),
-                                SizedBox(height: 33.h),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(AppSvgs.add),
-                                    TextButton(
-                                        onPressed: () {
-                                          openFilePicker();
-                                        },
-                                        child: Text(
-                                          'Добавить документ',
-                                          style: AppFonts.w500s15.copyWith(
-                                            color: AppColors.buttonColor,
-                                          ),
-                                        ))
-                                  ],
-                                )
-                              ],
-                            )),
+                                  SizedBox(height: 22.h),
+                                  Text(
+                                    textAlign: TextAlign.center,
+                                    "У вас пока нет добавленных результатов анализов",
+                                    style: AppFonts.w500s15.copyWith(
+                                      color: AppColors.fontsColor,
+                                    ),
+                                  ),
+                                  SizedBox(height: 33.h),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(AppSvgs.add),
+                                      TextButton(
+                                          onPressed: () {
+                                            openFilePicker();
+                                          },
+                                          child: Text(
+                                            'Добавить документ',
+                                            style: AppFonts.w500s15.copyWith(
+                                              color: AppColors.buttonColor,
+                                            ),
+                                          ))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
                             const Center(
                               child: Text("It's rainy here"),
                             ),
@@ -177,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -232,8 +233,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     String phone =
         SharedPrefsWidget.prefs.getString(AppConst.phoneNumber) ?? '';
 
-    result =
-        '+0 ${phone.substring(0, 3)} ${phone.substring(3, 5)} ${phone.substring(5, 7)} ${phone.substring(7, 9)}';
+    // result =
+    //     '+0 ${phone.substring(0, 3)} ${phone.substring(3, 5)} ${phone.substring(5, 7)} ${phone.substring(7, 9)}';
     return result;
   }
 
