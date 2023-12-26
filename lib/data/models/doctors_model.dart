@@ -9,16 +9,17 @@ class DoctorsModel {
   final String adress;
   final List<dynamic> feedback;
 
-  DoctorsModel(
-      {required this.name,
-      required this.specialty,
-      required this.raitng,
-      required this.image,
-      required this.infol,
-      required this.email,
-      required this.adress,
-      required this.feedback,
-      required this.phoneNumber});
+  DoctorsModel({
+    required this.name,
+    required this.specialty,
+    required this.raitng,
+    required this.image,
+    required this.infol,
+    required this.email,
+    required this.adress,
+    required this.feedback,
+    required this.phoneNumber,
+  });
 }
 
 class FeedBackModel {
@@ -39,10 +40,10 @@ class FeedBackModel {
 abstract class DoctorsData {
   static List<DoctorsModel> doctors = [
     DoctorsModel(
-      phoneNumber: '+996 555 89 39 54',
-      email: 'akylbekov.ch@example.com',
       name: 'Айбек Сатыбалдиев',
       specialty: 'Кардиолог',
+      phoneNumber: '+996 555 89 39 54',
+      email: 'akylbekov.ch@example.com',
       raitng: 5.5,
       image:
           'https://static.vecteezy.com/system/resources/previews/004/831/677/non_2x/doctor-male-avatar-character-icon-free-vector.jpg',
