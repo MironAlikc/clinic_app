@@ -230,8 +230,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String formatNumber() {
     String result = '';
 
-    String phone =
-        SharedPrefsWidget.prefs.getString(AppConst.phoneNumber) ?? '';
+    // String phone =
+    //     SharedPrefsWidget.prefs.getString(AppConst.phoneNumber) ?? '';
 
     // result =
     //     '+0 ${phone.substring(0, 3)} ${phone.substring(3, 5)} ${phone.substring(5, 7)} ${phone.substring(7, 9)}';
