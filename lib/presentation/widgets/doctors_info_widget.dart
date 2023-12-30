@@ -15,7 +15,7 @@ class DoctorsInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: InkWell(
         onTap: onTap,
         child: Container(
@@ -95,7 +95,7 @@ class DoctorsInfoWidget extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       height: 0,
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
