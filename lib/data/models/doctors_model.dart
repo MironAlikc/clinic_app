@@ -36,7 +36,6 @@ class FeedBackModel {
 }
 
 // abstract не можем создать экземпляр
-
 abstract class DoctorsData {
   static List<DoctorsModel> doctors = [
     DoctorsModel(
